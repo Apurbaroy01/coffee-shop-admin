@@ -8,7 +8,18 @@ const DashBoard = () => {
     return (
         <div>
             <NavBar></NavBar>
-            <div className="w-11/12 mx-auto pt-10 grid  md:grid-cols-12 gap-3">
+            <div className="mt-2">
+                
+                <div class="flex w-full flex-col">
+                    
+                    <div class="divider">
+                        <h2 className="text-3xl font-bold text-center text-emerald-600" id="font">Admin Panel</h2>
+                    </div>
+                    
+                </div>
+
+            </div>
+            <div className="w-11/12 mx-auto pt-5 grid  md:grid-cols-12 gap-3">
                 <div className="col-span-4 flex justify-center ">
                     <LeftBar></LeftBar>
                     <div className="flex flex-col lg:flex-row">

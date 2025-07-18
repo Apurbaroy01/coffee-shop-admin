@@ -15,6 +15,7 @@ import AddCoffee from './Components/DashBoard/AddCoffee';
 import UpdateCoffee from './Components/DashBoard/UpdateCoffee';
 import EditCoffee from './Components/DashBoard/EditCoffee';
 import LoginHistory from './Components/DashBoard/LoginHistory';
+import { ToastContainer } from 'react-toastify';
 
 
 const router = createBrowserRouter([
@@ -77,6 +78,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProviders>
       <RouterProvider router={router} />
+      <ToastContainer />
     </AuthProviders>
   </StrictMode>,
 )

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { AuthConText } from "../../AuthProviders/AuthProviders";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 const Login = () => {
     const [icon, setIcon] = useState();
     const { SignIn } = useContext(AuthConText)
@@ -24,6 +25,7 @@ const Login = () => {
                 const newuser = { email, password, LoginTime }
 
                 navigate('/DashBoard/addcoffee')
+                toast('Login SuccessFully')
 
                 fetch('http://localhost:5000/users', {
                     method: "PATCH",
@@ -39,6 +41,7 @@ const Login = () => {
             })
             .catch((error) => {
                 console.log(error.message)
+                toast('please type Correct email & password')
             })
 
 

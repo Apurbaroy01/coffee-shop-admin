@@ -3,12 +3,13 @@ import { useContext, useState } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { AuthConText } from "../../AuthProviders/AuthProviders";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 const SignUp = () => {
-    const {createUser}=useContext(AuthConText)
+    const { createUser } = useContext(AuthConText)
     const [icon, setIcon] = useState();
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
 
 
@@ -17,36 +18,44 @@ const SignUp = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        const user = { email, password };
+        const checkbox = form.checkbox.checked;
+        const user = { email, password,checkbox };
+
+        if(checkbox==false){
+          return  console.log('please accpt checkbox')
+        }
+
         console.log(user)
 
         form.reset();
 
         createUser(email, password)
-        .then((result)=>{
-            console.log(result.user)
-            const SignUpTime= result.user.metadata.creationTime;
-            const newUser={email, password,SignUpTime}
-            console.log(newUser)
+            .then((result) => {
+                console.log(result.user)
+                const SignUpTime = result.user.metadata.creationTime;
+                const newUser = { email, password, SignUpTime }
+                console.log(newUser)
 
-            fetch('http://localhost:5000/users',{
-                method: 'POST',
-                headers:{
-                    'content-type':'application/json'
-                },
-                body: JSON.stringify(newUser)
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast("SignUp Successfully")
+                    });
+
+
+                navigate('/login')
             })
-            .then(res=>res.json())
-            .then(data=>{
-                console.log(data)
-            });
+            .catch((error) => {
+                console.log(error.message)
 
-
-            navigate('/login')
-        })
-        .catch((error)=>{
-            console.log(error.message)
-        })
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -69,6 +78,13 @@ const SignUp = () => {
                                             icon ? <IoIosEye /> : <IoIosEyeOff />
                                         }
                                     </p>
+                                    
+                                        
+                                        <label className="label mt-3">
+                                            <input type="checkbox"  className="checkbox" name="checkbox"/>
+                                            I accept terms and condition
+                                        </label>
+                                    
                                 </div>
                                 <button className="btn btn-neutral mt-4">Register</button>
                             </fieldset>
