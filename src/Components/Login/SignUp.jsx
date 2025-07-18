@@ -25,6 +25,23 @@ const SignUp = () => {
         createUser(email, password)
         .then((result)=>{
             console.log(result.user)
+            const SignUpTime= result.user.metadata.creationTime;
+            const newUser={email, password,SignUpTime}
+            console.log(newUser)
+
+            fetch('http://localhost:5000/users',{
+                method: 'POST',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body: JSON.stringify(newUser)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                console.log(data)
+            });
+
+
             navigate('/login')
         })
         .catch((error)=>{

@@ -19,7 +19,23 @@ const Login = () => {
         SignIn(email, password)
             .then((result) => {
                 console.log("UserRigth", result.user)
+                
+                const LoginTime = result.user.metadata.lastSignInTime;
+                const newuser = { email, password, LoginTime }
+
                 navigate('/DashBoard/addcoffee')
+
+                fetch('http://localhost:5000/users', {
+                    method: "PATCH",
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(newuser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
             })
             .catch((error) => {
                 console.log(error.message)
@@ -28,7 +44,7 @@ const Login = () => {
 
     };
 
-    
+
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col ">

@@ -14,6 +14,7 @@ import DashBoard from './Components/DashBoard/DashBoard';
 import AddCoffee from './Components/DashBoard/AddCoffee';
 import UpdateCoffee from './Components/DashBoard/UpdateCoffee';
 import EditCoffee from './Components/DashBoard/EditCoffee';
+import LoginHistory from './Components/DashBoard/LoginHistory';
 
 
 const router = createBrowserRouter([
@@ -40,7 +41,13 @@ const router = createBrowserRouter([
           },
           {
             path: "deletecoffee",
-            element: <AddCoffee></AddCoffee>,
+            element: <UpdateCoffee></UpdateCoffee>,
+            loader: () => fetch('http://localhost:5000/coffee')
+          },
+          {
+            path: "loginhistory",
+            loader: ()=>fetch('http://localhost:5000/users'),
+            element: <LoginHistory></LoginHistory>,
           },
           {
             path: "updatecoffee/:id",

@@ -7,6 +7,7 @@ const LeftBar = () => {
             <NavLink className="btn rounded-2xl" to="/DashBoard/addcoffee">Add Coffee</NavLink>
             <NavLink className="btn rounded-2xl" to="/DashBoard/updatecoffee">UpDate Coffee</NavLink>
             <NavLink className="btn rounded-2xl" to="/DashBoard/deletecoffee">Delete Coffee</NavLink>
+            <NavLink className="btn rounded-2xl" to="/DashBoard/loginhistory">Login History</NavLink>
             
         </div>
     );
