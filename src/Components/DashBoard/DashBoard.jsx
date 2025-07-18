@@ -10,9 +10,9 @@ const DashBoard = () => {
             <NavBar></NavBar>
             <div className="mt-2">
                 
-                <div class="flex w-full flex-col">
+                <div className="flex w-full flex-col">
                     
-                    <div class="divider">
+                    <div className="divider">
                         <h2 className="text-3xl font-bold text-center text-emerald-600" id="font">Admin Panel</h2>
                     </div>
                     

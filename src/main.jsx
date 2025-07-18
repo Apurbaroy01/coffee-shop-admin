@@ -16,6 +16,7 @@ import UpdateCoffee from './Components/DashBoard/UpdateCoffee';
 import EditCoffee from './Components/DashBoard/EditCoffee';
 import LoginHistory from './Components/DashBoard/LoginHistory';
 import { ToastContainer } from 'react-toastify';
+import OddersCoffee from './Components/DashBoard/OddersCoffee';
 
 
 const router = createBrowserRouter([
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
             path: "updatecoffee/:id",
             loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
             element: <EditCoffee></EditCoffee>,
+          },
+          {
+            path: "odderscoffee",
+            loader: ()=> fetch('http://localhost:5000/oders'),
+            element: <OddersCoffee></OddersCoffee>,
           },
         ]
       },

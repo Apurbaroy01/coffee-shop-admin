@@ -6,7 +6,7 @@ const LoginHistory = () => {
     console.log(userLodingDtata)
 
     return (
-        <div>
+        <div className="bg-[#F4F3F0]">
             <h2 className=" text-3xl text-center font-bold mb-8 text-pink-600">Login History</h2>
             <div className="overflow-x-auto">
                 <table className="table">
