@@ -36,7 +36,7 @@ const SignUp = () => {
                 const newUser = { email, password, SignUpTime }
                 console.log(newUser)
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://cofee-store-server-neon.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

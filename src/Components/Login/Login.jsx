@@ -27,7 +27,7 @@ const Login = () => {
                 navigate('/DashBoard/addcoffee')
                 toast('Login SuccessFully')
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://cofee-store-server-neon.vercel.app/users', {
                     method: "PATCH",
                     headers: {
                         'content-type': 'application/json'

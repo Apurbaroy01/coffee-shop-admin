@@ -39,26 +39,26 @@ const router = createBrowserRouter([
           {
             path: "updatecoffee",
             element: <UpdateCoffee></UpdateCoffee>,
-            loader: () => fetch('http://localhost:5000/coffee')
+            loader: () => fetch('https://cofee-store-server-neon.vercel.app/coffee')
           },
           {
             path: "deletecoffee",
             element: <UpdateCoffee></UpdateCoffee>,
-            loader: () => fetch('http://localhost:5000/coffee')
+            loader: () => fetch('https://cofee-store-server-neon.vercel.app/coffee')
           },
           {
             path: "loginhistory",
-            loader: ()=>fetch('http://localhost:5000/users'),
+            loader: ()=>fetch('https://cofee-store-server-neon.vercel.app/users'),
             element: <LoginHistory></LoginHistory>,
           },
           {
             path: "updatecoffee/:id",
-            loader: ({ params }) => fetch(`http://localhost:5000/coffee/${params.id}`),
+            loader: ({ params }) => fetch(`https://cofee-store-server-neon.vercel.app/coffee/${params.id}`),
             element: <EditCoffee></EditCoffee>,
           },
           {
             path: "odderscoffee",
-            loader: ()=> fetch('http://localhost:5000/oders'),
+            loader: ()=> fetch('https://cofee-store-server-neon.vercel.app/oders'),
             element: <OddersCoffee></OddersCoffee>,
           },
         ]

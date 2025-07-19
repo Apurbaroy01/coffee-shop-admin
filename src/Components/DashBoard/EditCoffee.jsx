@@ -18,7 +18,7 @@ const EditCoffee = () => {
         const coffee = { coffeeName, supplierName, category, quantity, price, details, photo };
         console.log(coffee);
 
-        fetch(`http://localhost:5000/coffee/${coffeeLoader._id}`, {
+        fetch(`https://cofee-store-server-neon.vercel.app/coffee/${coffeeLoader._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
