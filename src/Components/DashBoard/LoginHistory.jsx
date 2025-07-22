@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 
 const LoginHistory = () => {
     const userLodingDtata = useLoaderData();
     console.log(userLodingDtata)
+
 
     return (
         <div className="bg-[#F4F3F0]">

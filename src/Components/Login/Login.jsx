@@ -9,6 +9,9 @@ const Login = () => {
     const navigate = useNavigate()
 
 
+    
+
+
     const handleSignIn = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -17,10 +20,12 @@ const Login = () => {
         const user = { email, password };
         console.log(user)
 
+
+
         SignIn(email, password)
             .then((result) => {
                 console.log("UserRigth", result.user)
-                
+
                 const LoginTime = result.user.metadata.lastSignInTime;
                 const newuser = { email, password, LoginTime }
 
@@ -37,6 +42,7 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
+                        
                     })
             })
             .catch((error) => {
