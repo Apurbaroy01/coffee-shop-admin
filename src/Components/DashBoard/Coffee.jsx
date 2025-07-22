@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
 const Coffee = ({ coffee }) => {
+    console.log(coffee)
     const handleDelete = (_id) => {
         console.log(_id)
         Swal.fire({
