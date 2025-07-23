@@ -27,7 +27,7 @@ const AddCoffee = () => {
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'success!',
-                        text: 'Delete Successfully!',
+                        text: 'Coffee add Successfully!',
                         icon: 'success',
                         confirmButtonText: 'Back'
                     })
@@ -45,7 +45,7 @@ const AddCoffee = () => {
                     <div className="grid grid-cols-2 gap-4">
                         <div className="">
                             <label className="label">Coffee Name</label>
-                            <input type="text" className="input" name="coffeeName" />
+                            <input type="text" className="input" name="coffeeName"  required/>
 
                             <label className="label">Supplier Name</label>
                             <input type="text" className="input" name="supplierName" />
@@ -58,7 +58,7 @@ const AddCoffee = () => {
                             <input type="text" className="input" name="quantity" />
 
                             <label className="label">Price</label>
-                            <input type="text" className="input" name="price" />
+                            <input type="text" className="input" name="price" required/>
 
                             <label className="label">Details</label>
                             <input type="text" className="input" name="details" />

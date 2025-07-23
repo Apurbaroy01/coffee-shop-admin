@@ -1,14 +1,41 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 const OddersCoffee = () => {
     const odderCoffee = useLoaderData();
+    
+    const [search, setSearch]=useState('');
+
+    const oddersCoffee= odderCoffee.filter(item=>item.email.toLowerCase().includes(search.toLowerCase()));
 
     return (
         <div className="min-h-screen bg-[#F4F3F0] p-6">
-            <h2 className="text-3xl font-bold text-center mb-10 text-amber-800">☕ All Coffee Orders</h2>
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 mb-12 px-4">
+                {/* Heading */}
+                <h2 className="text-2xl md:text-4xl font-extrabold text-amber-800 tracking-wide text-center md:text-left">
+                    ☕ Coffee Order List
+                </h2>
+
+                {/* Search Bar */}
+                <div className="relative w-70 max-w-sm">
+                    <input
+                        type="text"
+                        placeholder="Search Coffee Name..."
+                        className="w-full pl-12 pr-4 py-3 rounded-full border border-amber-400 focus:outline-none focus:ring-2 focus:ring-amber-500 text-gray-700"
+                        value={search}
+                        onChange={e=>setSearch(e.target.value)}
+                    />
+                    <div className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-500">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
 
             <div className="space-y-6 max-w-5xl mx-auto">
-                {odderCoffee.map(odder => (
+                {oddersCoffee.map(odder => (
                     <div
                         key={odder._id}
                         className="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 flex flex-col lg:flex-row overflow-hidden"
@@ -36,7 +63,7 @@ const OddersCoffee = () => {
                                 </div>
 
                                 <p className="text-gray-600">
-                                    <span className="font-semibold">Price:</span> ${odder.price}
+                                    <span className="font-bold">Price:</span> ${odder.price}
                                 </p>
                                 <p className="text-gray-600">
                                     <span className="font-semibold">Name:</span> {odder.name}

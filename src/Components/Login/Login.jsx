@@ -3,13 +3,15 @@ import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { AuthConText } from "../../AuthProviders/AuthProviders";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ProgressBar } from 'react-loader-spinner';
 const Login = () => {
     const [icon, setIcon] = useState();
+    const [loading, setLoading] = useState(false);
     const { SignIn } = useContext(AuthConText)
     const navigate = useNavigate()
 
 
-    
+
 
 
     const handleSignIn = (e) => {
@@ -19,6 +21,8 @@ const Login = () => {
         const password = form.password.value;
         const user = { email, password };
         console.log(user)
+        setLoading(true);
+
 
 
 
@@ -32,6 +36,8 @@ const Login = () => {
                 navigate('/DashBoard/addcoffee')
                 toast('Login SuccessFully')
 
+
+
                 fetch('https://cofee-store-server-neon.vercel.app/users', {
                     method: "PATCH",
                     headers: {
@@ -42,12 +48,14 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
-                        
+
                     })
+                    .finally(() => setLoading(false));
             })
             .catch((error) => {
                 console.log(error.message)
                 toast('please type Correct email & password')
+                setLoading(false);
             })
 
 
@@ -77,7 +85,21 @@ const Login = () => {
                                     </p>
                                 </div>
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                                <button className="btn btn-neutral mt-4">Login</button>
+
+
+                                <button className="btn btn-neutral mt-4">
+                                    {
+                                        loading ? <ProgressBar
+                                            visible={true}
+                                            height="80"
+                                            width="80"
+                                            color="#4fa94d"
+                                            ariaLabel="progress-bar-loading"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                        /> : 'Login'
+                                    }
+                                </button>
                             </fieldset>
                         </form>
 
